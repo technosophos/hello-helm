@@ -1,0 +1,11 @@
+{
+  "name": "hello-draft",
+  "version": "1.0.0",
+  "description": "Simple draft demo",
+  "main": "index.js",
+  "author": "technosophos",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js"
+  }
+}
