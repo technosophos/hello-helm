@@ -8,8 +8,8 @@ events.on("imagePush", (e, p) => {
   var docker = JSON.parse(e.payload)
   var version = docker.push_data.tag || "dev"
 
+  console.log(docker)
   if (docker.push_data.tag == "dev") {
-    console.log(docker)
     return
   }
 
