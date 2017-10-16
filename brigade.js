@@ -1,4 +1,4 @@
-const {events, Job} = require("libacid")
+const {events, Job} = require("brigadier")
 
 // Set to 2.5.1 b/c of ACS requirements
 const helmTag = "v2.5.1"
