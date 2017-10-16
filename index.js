@@ -3,7 +3,7 @@ const port = process.env.PORT || 8080;
 
 const requestHandler = (request, response) => {
   console.log(request.url);
-  response.end("Hello World, I'm Node.js!");
+  response.end("Hello Kubernetes World!");
 }
 
 http.createServer(requestHandler).listen(port, err => {
