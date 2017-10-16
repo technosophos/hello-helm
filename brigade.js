@@ -21,7 +21,8 @@ events.on("imagePush", (e, p) => {
 
   var helm = new Job("helm", "lachlanevenson/k8s-helm:" + helmTag)
   helm.tasks = [
-    "helm upgrade --reuse-values --set tag=" + version + " --install " + name + " /src/charts/helm-hello"
+    "ls /src",
+    "helm upgrade --reuse-values --set tag=" + version + " --install " + name + " /src/chart/helm-hello"
   ]
 
   var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
