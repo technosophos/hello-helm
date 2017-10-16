@@ -8,6 +8,11 @@ events.on("imagePush", (e, p) => {
   var docker = JSON.parse(e.payload)
   var version = docker.push_data.tag || "dev"
 
+  if (docker.push_data.tag == "dev") {
+    console.log(docker)
+    return
+  }
+
   var helm = new Job("helm", "lachlanevenson/k8s-helm:" + helmTag)
   helm.tasks = [
     "helm upgrade --set tag=" + version + " --install " + name + " /src/charts/helm-hello"
