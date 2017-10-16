@@ -29,7 +29,7 @@ events.on("imagePush", (e, p) => {
 
   helm.run().then( result => {
     slack.env = {
-      SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
+      SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
       SLACK_USERNAME: "AcidBot",
       SLACK_TITLE: ":helm: upgraded " + name,
       SLACK_MESSAGE: result.toString(),
