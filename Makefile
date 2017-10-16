@@ -11,4 +11,4 @@ docker-build:
 
 .PHONY: docker-push
 docker-push:
-	docker push $(REGISTRY)/hello-helm
+	docker push $(REGISTRY)/hello-helm:$(VERSION)

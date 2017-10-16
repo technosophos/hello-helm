@@ -10,4 +10,43 @@ To customize it, you will need to edit the registry in the following places:
 Then you will need to configure your ACR to trigger a webhook on each push
 event.
 
+## Prerequisites
+
+- Helm and Brigade must be installed on your cluster
+- Your cluster must have a routable IP attached to the `brigade-gw` service
+- You must have an ACR created with type `Managed`
+- You need a clone of this repository
+
+## Configuring ACR
+
+You can either use the `az acr webhook` tool or use the `webhooks` panel in the
+Container Registry section of the Azure portal. You must configure the webhook
+to point to the Brigade gateway.
+
+To get the external IP of the gateway, do:
+
+```
+$ kubectl get svc | brigade-gw
+```
+
+Set up your webhook to use `http://<IP>:7744/events/dockerhub/<Project Name>/<Commit>.`
+
+- The IP is the gateway IP from the command above
+- Project name is the _anem of your Brigade project_
+- Commit is the commit in the repo you want to use to fetch the brigade.js from
+
+So if project name is `technosophos/hello-helm`, and the host is `example.com`, then 
+the URL would be something like:
+
+```
+http://example.com:7744/events/dockerhub/technosophos/hello-helm/master
+```
+
+## How it works
+
+- `make docker-build docker-push` pushes a new image
+- ACR responds to the push by calling the webhook
+- The webhook triggers a brigade event
+- The brigade event handler causes Helm to upgrade the chart with the new label
+
 
