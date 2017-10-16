@@ -13,7 +13,7 @@ events.on("imagePush", (e, p) => {
     return
   }
 
-  var version = docker.target.tag || "dev"
+  var version = docker.target.tag || "latest"
   if (version == "latest") {
     console.log("ignoring 'latest'")
     return

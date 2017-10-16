@@ -1,4 +1,4 @@
-VERSION ?= dev
+VERSION ?= latest
 REGISTRY ?= osseu.azurecr.io
 
 .PHONY: build
