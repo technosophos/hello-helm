@@ -49,4 +49,11 @@ http://example.com:7744/events/dockerhub/technosophos/hello-helm/master
 - The webhook triggers a brigade event
 - The brigade event handler causes Helm to upgrade the chart with the new label
 
+You can update the new build by running:
 
+```
+$ VERSION=0.1.2 make docker-build docker-push
+```
+
+The above will create a new tag for the image (`0.1.2`), which will trigger a
+new `helm upgrade`.

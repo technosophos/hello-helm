@@ -20,6 +20,7 @@ events.on("imagePush", (e, p) => {
   }
 
   var helm = new Job("helm", "lachlanevenson/k8s-helm:" + helmTag)
+  helm.storage.enabled = false
   helm.tasks = [
     "ls /src",
     "helm upgrade --reuse-values --set tag=" + version + " --install " + name + " /src/chart/helm-hello"
@@ -28,6 +29,7 @@ events.on("imagePush", (e, p) => {
   var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
 
   helm.run().then( result => {
+    slack.storage.enabled = false
     slack.env = {
       SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
       SLACK_USERNAME: "AcidBot",
