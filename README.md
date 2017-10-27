@@ -16,6 +16,7 @@ event.
 - Your cluster must have a routable IP attached to the `brigade-gw` service
 - You must have an ACR created with type `Managed`
 - You need a clone of this repository
+- You need to configure a Slack incomming webhook. See [Slack-Notify](https://github.com/technosophos/slack-notify)
 
 ## Configuring ACR
 
