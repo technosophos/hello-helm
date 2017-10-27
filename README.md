@@ -33,7 +33,7 @@ $ kubectl get svc | brigade-gw
 Set up your webhook to use `http://<IP>:7744/events/dockerhub/<Project Name>/<Commit>.`
 
 - The IP is the gateway IP from the command above
-- Project name is the _anem of your Brigade project_
+- Project name is the _name of your Brigade project_
 - Commit is the commit in the repo you want to use to fetch the brigade.js from
 
 So if project name is `technosophos/hello-helm`, and the host is `example.com`, then 
@@ -41,6 +41,18 @@ the URL would be something like:
 
 ```
 http://example.com:7744/events/dockerhub/technosophos/hello-helm/master
+```
+
+## Configuring your Brigade project
+
+If this is the first time you have used the Slack Notifier webhook, you need to add
+the Slack incomming webhook URL to your project.
+
+Typically, you will want to edit the project's values. But here's how to do it
+from the Helm commandline:
+
+```console
+$ helm upgrade myproject brigade/brigade-project --set secrets.SLACK_WEBHOOK=https://rest/of/url
 ```
 
 ## How it works
