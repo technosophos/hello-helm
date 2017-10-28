@@ -1,7 +1,7 @@
 # Hello Helm
 
 This is a simple demo of an ACR webhook to automatically upgrade a Helm chart. The
-`brigade.js` is configured to upgrae a Helm release every time the specified
+`brigade.js` is configured to upgrade a Helm release every time the specified
 Docker image is upgraded in an Azure Container Registry (ACR).
 
 _This is not production quailty. It is a demo._
