@@ -32,7 +32,7 @@ events.on("imagePush", (e, p) => {
     slack.storage.enabled = false
     slack.env = {
       SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
-      SLACK_USERNAME: "AcidBot",
+      SLACK_USERNAME: "BrigadeBot",
       SLACK_TITLE: ":helm: upgraded " + name,
       SLACK_MESSAGE: result.toString(),
       SLACK_COLOR: "#0000ff"
