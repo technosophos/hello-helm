@@ -3,7 +3,7 @@ const {events, Job} = require("brigadier")
 // Set to 2.5.1 b/c of ACS requirements
 const helmTag = "v2.5.1"
 
-events.on("imagePush", (e, p) => {
+events.on("image_push", (e, p) => {
   var name = "example-hello"
   var docker = JSON.parse(e.payload)
   console.log(docker)
